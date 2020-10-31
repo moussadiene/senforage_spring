@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  layout:decorate="~{layout/template.html}">
+<body>
+	<div layout:fragment="content">
+	<div class="app-title">
+	        <div>
+	          <h1><i class="fa  fa-user-md"> </i> CLIENT</h1>
+	          <p>Liste des clients inscrit sur la plateforme sen-forage</p>
+	        </div>
+	        <ul class="app-breadcrumb breadcrumb side">
+	          <li class="breadcrumb-item"><i class="fa fa-user-md fa-lg"></i></li>
+	          <li class="breadcrumb-item">Clients</li>
+	          <li class="breadcrumb-item active"><a href="#">Nouveau</a></li>
+	        </ul>
+      </div>
+		<div class="row mt-5">
+			<div class="col-md-2 mt-3">
+				<a th:href="@{/clients}" class="btn btn-primary" type="button" > <i class="fa fa-arrow-circle-left"></i> retour à la liste</a>
+			</div>
+			<div class="col-md-10 mt-3">
+	          <div class="tile ">
+	            <h3 class="tile-title"> Ajouter un nouveau client <i class="fa fa-user-md fa-lg pull-right"></i></h3>
+	            <hr/>
+	            <div class="tile-body"> 	
+	             <form th:action="@{/clients/add}" method="post" th:object="${client}">
+	             	<div class="col-md-12"> 
+	                	
+                        <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Famille</label> 
+                            <input type="text" class="form-control col-md-9"  th:field="${client.nomFamille}" id="field-3" placeholder="nom de famille"> 
+                            
+                         </div> 
+                         <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Adresse</label> 
+                            <input type="text" class="form-control col-md-9 "  th:field="${client.adresse}" id="field-3" placeholder="Adresse du client"> 
+                            
+                         </div>
+                         <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Telephone</label> 
+                            <input type="text" class="form-control col-md-9"  th:field="${client.telephone}" id="field-3" placeholder="Telephone du client"> 
+                            
+                         </div> 
+                          <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Village</label>
+                               <select class="form-control col-md-9 " th:field="*{village.id}" id="field-3">
+                               		<option th:each="vi:${listeVillages}" th:value="${vi.id}" th:text="${vi.nomVillage}">
+                               </select>                                    
+                                                               
+                         </div> 
+                    </div> 
+	                
+	                <div class="form-group mt-4 text-right">
+	                  <button class="btn btn-default" type="reset"><i class="fa fa-fw fa-lg fa-times-circle"></i>Annuler</button>&nbsp;&nbsp;&nbsp;
+	                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Envoyer</button>
+	                </div>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	        
+		</div>
+		
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,102 @@
+Note de SPRING BOOT
+
+	- modules de l'application
+		
+		* spring security : pour gerer tous ce qui est securité de l'application authentification et role
+		* spring web :
+		* spring jpa : 
+		* thymleaf : moteur de template
+		
+	 - L'objet Model :
+	 	l'objet modele de spring permet de recuperer toutes les données ( 
+	 	* elle permet d'initialiser des objets pour le avant de le passer directement a notre vue 
+	 		exple :  model.addAttribute("nomDansLaVue",listeOuObject)
+	 		
+	 	* elle permet de recuperer des objets pour l'envoyer de la vue 
+	 		exple :  @ModelAttribute Classe objet
+	 				liste.add(objet)
+	 				
+	 - on peut faire une redirection avec : return "redirect:root"
+	 
+	 - @EnableAutoConfiguration : activer la configuration de l'application .proprieties 
+	 - @Configuration : permet de dire que c'est la partie main qui gere l'application
+	 - @ComponentScan : scan
+	 	-SpringBootApplication : regroupe les trois a la fois
+	 	
+	 -relation :
+	 
+				 @OneToMany(mappedBy="village", targetEntity=Client.class, fetch = FetchType.LAZY)
+				private List<Client> clients;
+				
+				@ManyToOne
+				    @JoinColumn(name="village_id")
+			    private Village village;
+    
+    -spring securité 
+    
+    redefinir les methodes de configuration :
+    
+    	* protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+			}
+			- c'est dans cette methode qu'on doit specifier qui sont les utilisateurs
+				qui doivent acceder a notre application
+				
+			- auth.inMemoryAuthentication().withUser("djine").password("passer123").roles("ADMIN","USER");
+				cela definie un utilisateur en memoire tempo
+				
+			- auth.inMemoryAuthentication().withUser("user").password("passer").roles("USER");
+				cela definie le role de utilisateur 
+				
+		*protected void configure(HttpSecurity http) throws Exception {
+			http.formLogin();
+			
+			
+			http.exceptionHandling().accessDeniedPage("/403");
+			super.configure(http);
+		} 
+			- permet de definir les regles de securité en utilisateur la HttpSercurity
+			
+			- http.formLogin()
+	    		indique a spring securité que l'operation d'authentification 
+	    		passe d'abord par un formulaire
+	    	
+	    	-definir les roles d'access a chaque root definie dans notre application
+	    		http.authorizeRequests().antMatchers("/operation","/consulterCompte").hasRole("USER");
+				http.authorizeRequests().antMatchers("/saveOperation").hasRole("ADMIN");
+				
+			-private DataSource dataSource;
+				permet d'uliser le meme base de donnees de notre application
+				
+			- http.formLogin();
+				permet de charger la page d'autemtification par defaut
+			
+			- http.formLogin().loginPage("/login");
+				permet de definir la page de d'authentification
+				
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">		 
+
+<body>
+ 	
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" width="50px" height="50px" src="/img/profile.jpg" th:src="@{/img/profile.jpg}"  alt="DJINE">
+        <div>
+          <p class="app-sidebar__user-name">Moussa DIENE</p>
+          <p class="app-sidebar__user-designation">Dev FullStack</p>
+        </div>
+      </div>
+      <hr class="bg-primary" />
+      <ul class="app-menu">
+        <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Clients</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>Ajouter Client</a></li>
+            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i>Liste Clients</a></li>
+          </ul>
+        </li>
+       
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Villages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" th:href="@{/villages/index}"><i class="icon fa fa-circle-o"></i>Ajouter Village</a></li>
+            <li><a class="treeview-item" th:href="@{/villages/index}"><i class="icon fa fa-circle-o"></i> Liste Village</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+		
+</body>
+</html>

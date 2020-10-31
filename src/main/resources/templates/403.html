@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  layout:decorate="~{layout/template.html}">
+<body>
+  	<div layout:fragment="content">
+  		 <div class="page-error tile">
+	        <h1><i class="fa fa-exclamation-circle"></i> Erreur 403: l'accés est réfugé</h1>
+	        
+	        <p>Vous n'avez pas le droit d'accéder a cette page .</p>
+	        <br/>
+	        <p><a class="btn btn-primary" href="javascript:window.history.back();">Revenir en arrière </a></p>
+      </div>
+  	</div>
+ </body>
+</html>

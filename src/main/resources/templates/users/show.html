@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  layout:decorate="~{layout/template.html}">
+<body>
+	<div layout:fragment="content">
+		<div class="row mt-5">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+	          <div class="tile mt-5">
+	            <h3 class="tile-title">Modifier Users</h3>
+	            <hr/>
+	            <div class="tile-body"> 	
+	             <form th:action="@{/users/add}" method="post" th:object="${users}">
+	             	<div class="col-md-12"> 
+	                	<input type="hidden" th:value="${users.id}" th:field="${users.id}">
+	                	<input type="hidden" th:value="${users.password}" th:field="${users.password}">
+	                	
+                        <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Nom</label> 
+                            <input type="text" class="form-control col-md-9 " th:field="*{nom}" id="nom" placeholder="nom de " required="required"> 
+                            
+                         </div>
+                         <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Prenom</label> 
+                            <input type="text" class="form-control col-md-9 " th:field="*{prenom}" id="prenom" placeholder="prenom de " required="required"> 
+                            
+                         </div> 
+                         <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Email</label> 
+                            <input type="email" class="form-control col-md-9 " th:field="*{username}" id="email" placeholder="Email" required="required"> 
+                            
+                         </div>
+                         
+                          <div class="form-group row"> 
+                            <label for="field-3" class="control-label col-md-3">Roles</label>
+                            <select class="form-control col-md-9 " th:field="*{roles}" id="field-3">
+                            		<option th:each="r:${listeRoles}" th:value="${r.id}" th:text="${r.role}">
+                            </select>                                    
+                         </div> 
+                      </div> 
+	                
+	                <div class="form-group col-md-2 align-self-end">
+	                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Modifier</button>
+	                </div>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	        x
+		</div>
+		
+	</div>
+	
+</body>
+</html>

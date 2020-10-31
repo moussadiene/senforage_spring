@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  layout:decorate="~{layout/template.html}">
+<body>
+	<div layout:fragment="content">
+	<div class="app-title">
+	        <div>
+		          <h1><i class="fa  fa-th-large"> </i> VILLAGE</h1>
+		          <p>Liste des villages inscrit sur la plateforme sen-forage</p>
+		        </div>
+		        <ul class="app-breadcrumb breadcrumb side">
+		          <li class="breadcrumb-item"><i class="fa fa-th-large fa-lg"></i></li>
+		          <li class="breadcrumb-item">Villages</li>
+		          <li class="breadcrumb-item active"><a href="#">Liste</a></li>
+		        </ul>
+	      </div>
+		<div class="row mt-5">
+			<div class="col-md-2 mt-3">
+				<a th:href="@{/villages}" class="btn btn-primary" type="button" > <i class="fa fa-arrow-circle-left"></i> retour à la liste</a>
+			</div>
+			<div class="col-md-9 mt-3">
+	          <div class="tile ">
+	            <h3 class="tile-title">Modifier un village<i class="fa fa-th-large fa-lg pull-right"></i></h3>
+	            <hr/>
+	            <div class="tile-body"> 	
+	             <form th:action="@{/villages/add}" method="post" th:object="${village}">
+	                <div class="row col-md-12">
+	                	<input type="hidden" th:value="${village.id}" th:field="${village.id}">
+	                	<div class="form-group  col-md-10">
+		                  <label for="field-3" class="control-label ">Village</label> 
+		                  <input type="text" class="form-control col-md-12 input-sm" th:field="${village.nomVillage}" th:value="*{nomVillage}" id="field-3" placeholder="nom Village">                 
+		                </div>
+		                
+		                <div class="form-group col-md-2 align-self-end">
+		                  <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Modifier</button>
+		                </div>
+	                </div>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	        
+		</div>
+		
+	</div>
+	
+</body>
+</html>
